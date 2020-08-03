@@ -76,4 +76,5 @@ def piskvorky1d():
 
 
 #if __name__ == "__main__":
+# ahoj
 piskvorky1d()
