@@ -1,4 +1,5 @@
-from random import randrange
+import util
+import ai
 
 DELKA_POLE = 20
 
@@ -23,16 +24,6 @@ def vyhodnot(pole):
     else:
         return "-"
 
-def tah(pole, cislo_policka, symbol):
-    """
-    Vrátí herní pole s daným symbolem umístěným na danou pozici.
-    """
-    cast1 = pole[:cislo_policka]
-    cast2 = pole[cislo_policka + 1:]
-
-    vysledne_pole = cast1 + symbol + cast2
-    return vysledne_pole
-
 
 def tah_hrace(pole):
     """
@@ -47,17 +38,7 @@ def tah_hrace(pole):
             print("Toto pole je obsazené, zkus to znovu")
         print("Zadej číslo mezi 0 a 19")
 
-    return tah(pole, kam_hrat, 'x')
-
-def tah_pocitace(pole):
-    """
-    Vrátí herní pole se zaznamenaným tahem počítače
-    """
-    pc_tah = randrange(0, 19)
-    while pole[pc_tah] != '-':
-        pc_tah = randrange(0, 19)
-
-    return tah(pole, pc_tah, 'o')
+    return util.tah(pole, kam_hrat, 'x')
 
 
 def piskvorky1d():
@@ -69,12 +50,7 @@ def piskvorky1d():
     while vyhodnot(herni_pole) == '-':
         herni_pole = tah_hrace(herni_pole)
         print(herni_pole)
-        herni_pole = tah_pocitace(herni_pole)
+        herni_pole = ai.tah_pocitace(herni_pole)
         print(herni_pole)
         
     print("Vítězem je", vyhodnot(herni_pole))
-
-
-#if __name__ == "__main__":
-# ahoj
-piskvorky1d()
