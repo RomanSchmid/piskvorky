@@ -47,10 +47,16 @@ def piskvorky1d():
     """
     herni_pole = '-' * DELKA_POLE
 
-    while vyhodnot(herni_pole) == '-':
+    while True:
         herni_pole = tah_hrace(herni_pole)
+        if vyhodnot(herni_pole) != '-':
+            break
         print(herni_pole)
+
         herni_pole = ai.tah_pocitace(herni_pole)
+        if vyhodnot(herni_pole) != '-':
+            break
         print(herni_pole)
-        
+    
+    print(herni_pole)
     print("Vítězem je", vyhodnot(herni_pole))
